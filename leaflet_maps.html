@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM2.5浓度展示系统</title>
+    <!-- 引入layui -->
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="layui/layui.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 引入leaflet及其插件 -->
+    <link rel="stylesheet" href="leaflet/leaflet.css" />
+    <script src="leaflet/leaflet.js"></script>
+    <script src="leaflet/leaflet.ChineseTmsProviders.js"></script>
+    <!-- leaflet绘制元素相关插件 -->
+    <script src="leaflet/src/Leaflet.draw.js"></script>
+    <script src="leaflet/src/Leaflet.Draw.Event.js"></script>
+    <link rel="stylesheet" href="leaflet/src/leaflet.draw.css" />
+    <script src="leaflet/src/Toolbar.js"></script>
+    <script src="leaflet/src/Tooltip.js"></script>
+    <script src="leaflet/src/ext/GeometryUtil.js"></script>
+    <script src="leaflet/src/ext/LatLngUtil.js"></script>
+    <script src="leaflet/src/ext/LineUtil.Intersect.js"></script>
+    <script src="leaflet/src/ext/Polygon.Intersect.js"></script>
+    <script src="leaflet/src/ext/Polyline.Intersect.js"></script>
+    <script src="leaflet/src/ext/TouchEvents.js"></script>
+    <script src="leaflet/src/draw/DrawToolbar.js"></script>
+    <script src="leaflet/src/draw/handler/Draw.Feature.js"></script>
+    <script src="leaflet/src/draw/handler/Draw.SimpleShape.js"></script>
+    <script src="leaflet/src/draw/handler/Draw.Polyline.js"></script>
+    <script src="leaflet/src/draw/handler/Draw.Marker.js"></script>
+    <script src="leaflet/src/draw/handler/Draw.Circle.js"></script>
+    <script src="leaflet/src/draw/handler/Draw.CircleMarker.js"></script>
+    <script src="leaflet/src/draw/handler/Draw.Polygon.js"></script>
+    <script src="leaflet/src/draw/handler/Draw.Rectangle.js"></script>
+    <script src="leaflet/src/edit/EditToolbar.js"></script>
+    <script src="leaflet/src/edit/handler/EditToolbar.Edit.js"></script>
+    <script src="leaflet/src/edit/handler/EditToolbar.Delete.js"></script>
+    <script src="leaflet/src/Control.Draw.js"></script>
+    <script src="leaflet/src/edit/handler/Edit.Poly.js"></script>
+    <script src="leaflet/src/edit/handler/Edit.SimpleShape.js"></script>
+    <script src="leaflet/src/edit/handler/Edit.Rectangle.js"></script>
+    <script src="leaflet/src/edit/handler/Edit.Marker.js"></script>
+    <script src="leaflet/src/edit/handler/Edit.CircleMarker.js"></script>
+    <script src="leaflet/src/edit/handler/Edit.Circle.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .maps {
+            width: 99%;
+            height: 98%;
+            margin: 0 auto;
+            /* border: 1px solid gray; */
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- layuui -->
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域 -->
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item layui-logo layui-bg-black">PM2.5浓度展示系统</li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;">在线地图浏览</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;">在线底图</a></dd>
+                            <dd><a href="javascript:;">遥感影像</a></dd>
+                            <dd><a href="leaflet_maps.html">刷新/清除图层</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">绘制元素</a>
+                    </li>
+                    <li class="layui-nav-item"><a href="stationcharts.html">图表可视化</a></li>
+                    <li class="layui-nav-item"><a href="javascript:;">友情链接</a>
+                        <dl class="layui-nav-child">
+                            <dd><a
+                                    href="https://baike.baidu.com/item/%E7%BB%86%E9%A2%97%E7%B2%92%E7%89%A9/804913">PM2.5</a>
+                            </dd>
+                            <dd><a
+                                    href="https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/dqhjbh/dqhjzlbz/201203/t20120302_224165.shtml">环境空气质量标准</a>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div class="body-contain">
+                <div class="maps layui-panel" id="map"></div>
+            </div>
+        </div>
+        <div class="layui-footer">
+            <!-- 底部固定区域(显示坐标/时间) -->
+            <span class="today-time"></span>
+        </div>
+    </div>
+
+    <!-- 显示当前时间 -->
+    <script src="js/currentdata.js"></script>
+    <!-- 引入地图内容-->
+    <script src="js/maps.js"></script>
+    <!-- 引入绘制元素功能 -->
+    <script src="js/drawelements.js"></script>
+
+</body>
+
+</html>

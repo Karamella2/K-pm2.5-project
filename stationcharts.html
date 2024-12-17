@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM2.5浓度展示系统</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 引入layui -->
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="layui/layui.js"></script>
+    <!-- 引入echarts库 -->
+    <script src="js/echarts.min.js"></script>
+    <script src="js/china.js"></script>
+    <!-- 引入jQuery -->
+    <script src="js/jquery-3.7.0.min.js"></script>
+    <!-- <script src="json/202001city.json"></script> -->
+</head>
+
+<body>
+    <!-- layuui -->
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item layui-logo layui-bg-black">PM2.5浓度展示系统</li>
+                    <li class="layui-nav-item">
+                        <a class="" href="leaflet_maps.html">在线地图浏览</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;">在线底图</a></dd>
+                            <dd><a href="javascript:;">遥感影像</a></dd>
+                            <dd><a href="leaflet_maps.html">刷新/清除图层</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">绘制元素</a>
+                    </li>
+                    <li class="layui-nav-item"><a href="stationcharts.html">图表可视化</a></li>
+                    <li class="layui-nav-item"><a href="javascript:;">友情链接</a>
+                        <dl class="layui-nav-child">
+                            <dd><a
+                                    href="https://baike.baidu.com/item/%E7%BB%86%E9%A2%97%E7%B2%92%E7%89%A9/804913">PM2.5</a>
+                            </dd>
+                            <dd><a
+                                    href="https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/dqhjbh/dqhjzlbz/201203/t20120302_224165.shtml">环境空气质量标准</a>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div class="body-contain">
+                <!-- <div class="layui-form"> -->
+                <!-- </div> -->
+                <div class="layui-form-item" style="z-index: 9;">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">选择年月</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" id="ID-laydate-type-month" placeholder="yyyy-MM">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-box layui-panel" id="map-box"> </div>
+                <div class="bar-box layui-panel" id="bar-box"></div>
+            </div>
+        </div>
+        <div class="layui-footer">
+            <!-- 底部固定区域(显示坐标/时间) -->
+            <span class="today-time"></span>
+        </div>
+    </div>
+
+    <script>
+        // $.getJSON('2020-01-01.json', function (datas) {
+        //     console.log(datas);
+        // })
+
+        // $.get('json/2020-01-01.json').done(function (data) {
+        //     console.log(data);
+        // });
+    </script>
+
+    <!-- footer显示当前时间 -->
+    <script src="js/currentdata.js"></script>
+    <!-- ECharts图表可视化功能 -->
+    <script src="js/stationcharts.js"></script>
+</body>
+
+</html>
